@@ -1,0 +1,285 @@
+Build a full production-ready B2B corporate platform using Python Flask for an international chemical export company.
+
+Company Name: Dual Life Chemicals
+Tagline: "Precision in Chemistry. Power in Global Trade."
+
+This is not just a website.
+It is a corporate CMS + B2B ordering platform.
+
+Technology Stack:
+
+Backend: Python Flask
+
+Database: PostgreSQL (SQLite allowed for development)
+
+ORM: SQLAlchemy
+
+Authentication: Secure hashed passwords (werkzeug)
+
+Session-based authentication
+
+Role-based access (Admin, Verified User, Unverified User)
+
+Frontend: Clean HTML + CSS (light institutional theme)
+
+No React required
+
+Must run with: python app.py
+
+CORE FEATURES
+1️⃣ Admin System
+
+Admin must have:
+
+Secure login
+
+Dashboard panel
+
+Ability to edit ANY page content:
+
+Home
+
+About
+
+Infrastructure
+
+Global Presence
+
+Rich text content editor
+
+Publish changes directly
+
+Add/Edit/Delete Products
+
+Add/Edit/Delete Owner Profiles
+
+View & manage inquiries
+
+View & manage orders
+
+Approve users as "Verified"
+
+Admin role must be protected and secured.
+
+2️⃣ Dynamic Page CMS
+
+All major content should be stored in database:
+
+Page titles
+
+Page descriptions
+
+Section content
+
+Hero text
+
+Footer content
+
+Admin edits content → clicks Publish → instantly updated live.
+
+3️⃣ Product System
+
+Each product should have:
+
+Name
+
+Category
+
+Description
+
+Technical details
+
+Image upload
+
+Inquiry button
+
+Add to Cart button
+
+4️⃣ Cart System (B2B Model)
+
+User can:
+
+Add multiple products to cart
+
+Update quantity
+
+Remove items
+
+View full cart summary
+
+Cart must be session-based (or user-based if logged in).
+
+5️⃣ User Authentication System
+
+Two types of users:
+
+Unverified User
+
+Can register using:
+
+Email
+
+OR mobile number
+
+Must create password
+
+Can log in
+
+Can add to cart
+
+Cannot proceed to payment
+
+Verified User
+
+Approved by admin
+
+Can:
+
+Access checkout
+
+See payment options
+
+Place orders
+
+6️⃣ Checkout Flow
+
+Only Verified Users can:
+
+Enter company details
+
+Enter shipping details
+
+Select payment method
+
+Confirm order
+
+After checkout:
+
+Order stored in database
+
+Admin receives order record
+
+User sees order in "My Account"
+
+7️⃣ My Account Section
+
+Logged-in users can:
+
+View profile
+
+Update contact details
+
+See order history
+
+See order status
+
+View cart
+
+Logout
+
+8️⃣ Order Management (Admin)
+
+Admin can:
+
+View all orders
+
+Change order status:
+
+Pending
+
+Processing
+
+Shipped
+
+Completed
+
+See user details
+
+See order items
+
+DATABASE MODELS REQUIRED
+
+User (role: admin / verified / unverified)
+
+Product
+
+Owner
+
+PageContent
+
+CartItem
+
+Order
+
+OrderItem
+
+Inquiry
+
+DESIGN SYSTEM
+
+Theme: Clean Institutional Corporate
+
+Colors:
+
+Background: #f8f9fb
+
+White sections
+
+Deep navy blue primary
+
+Soft grey secondary
+
+Minimal gold highlights
+
+Professional typography
+
+No dark theme.
+No flashy animation.
+Subtle hover effects only.
+
+SECURITY REQUIREMENTS
+
+Password hashing
+
+Secure file uploads
+
+CSRF protection
+
+Role-based route protection
+
+Input validation
+
+Protected admin routes
+
+DEPLOYMENT READY
+
+Include:
+
+requirements.txt
+
+.env configuration
+
+PostgreSQL configuration support
+
+Clear run instructions:
+pip install -r requirements.txt
+python app.py
+
+FINAL OBJECTIVE
+
+The final result must feel like:
+
+A professional B2B chemical export platform
+Not a small ecommerce store
+Not a startup SaaS
+Not a luxury brand
+
+It should communicate:
+
+Authority
+
+Scale
+
+Compliance
+
+Structured international trade operations
