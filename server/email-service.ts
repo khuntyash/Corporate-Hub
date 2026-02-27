@@ -1,16 +1,30 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 import type { Inquiry, Order, User } from '@shared/schema';
 
-// Use the Resend API key instead of SMTP which is blocked by Render
-const resend = new Resend('re_6GmH7XwZ_LoD2S8Gc41ZDAoaqGutqbxjw');
+// Create a transporter using Gmail SMTP
+// Note: We create it lazily to avoid crashing on startup if env vars are missing.
+const createTransporter = () => {
+  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    console.warn("SMTP credentials not found in environment variables. Emails will not be sent.");
+    return null;
+  }
+
+  return nodemailer.createTransport({
+    host: '142.250.114.108', // smtp.gmail.com IPv4 bypass to avoid ENETUNREACH on Render's IPv6
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+    tls: {
+      servername: 'smtp.gmail.com' // Verify cert against hostname, not IP
+    }
+  });
+};
 
 const COMPANY_NAME = process.env.COMPANY_NAME || 'Corporate Hub';
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || process.env.SMTP_USER || 'admin@example.com';
-
-// Note: Without a verified domain, Resend requires you to send FROM "onboarding@resend.dev"
-// AND you can ONLY send TO the email address you signed up to Resend with (for testing).
-// Once you add a real domain in the Resend dashboard, you can change this.
-const FROM_EMAIL = `"${COMPANY_NAME}" <onboarding@resend.dev>`;
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || process.env.SMTP_USER;
 
 // Reusable styling for emails to ensure a professional look
 const emailStyles = `
@@ -30,10 +44,13 @@ const emailStyles = `
  * Sends inquiry emails to both the user and the admin.
  */
 export const sendInquiryEmails = async (inquiry: Inquiry) => {
+  const transporter = createTransporter();
+  if (!transporter) return;
+
   try {
     // 1. Send "Thank You" email to User
-    const userPromise = resend.emails.send({
-      from: FROM_EMAIL,
+    const userMailOptions = {
+      from: `"${COMPANY_NAME}" <${process.env.SMTP_USER}>`,
       to: inquiry.buyerEmail,
       subject: `Thank you for your inquiry - ${COMPANY_NAME}`,
       html: `
@@ -68,11 +85,11 @@ export const sendInquiryEmails = async (inquiry: Inquiry) => {
         </body>
         </html>
       `
-    });
+    };
 
     // 2. Send Notification email to Admin
-    const adminPromise = resend.emails.send({
-      from: `"${COMPANY_NAME} System" <onboarding@resend.dev>`,
+    const adminMailOptions = {
+      from: `"${COMPANY_NAME} System" <${process.env.SMTP_USER}>`,
       to: ADMIN_EMAIL,
       subject: `[New Inquiry] ${inquiry.subject} - from ${inquiry.buyerName}`,
       html: `
@@ -108,15 +125,15 @@ export const sendInquiryEmails = async (inquiry: Inquiry) => {
         </body>
         </html>
       `
-    });
+    };
 
     // Send emails in parallel
-    const [userRes, adminRes] = await Promise.all([userPromise, adminPromise]);
+    await Promise.all([
+      transporter.sendMail(userMailOptions).catch(e => console.error("Failed to send user inquiry email:", e)),
+      transporter.sendMail(adminMailOptions).catch(e => console.error("Failed to send admin inquiry email:", e))
+    ]);
 
-    if (userRes.error) console.error("Failed to send user inquiry email:", userRes.error);
-    if (adminRes.error) console.error("Failed to send admin inquiry email:", adminRes.error);
-
-    console.log(`[Email Service] Inquiry emails handled via Resend for ID: ${inquiry.id}`);
+    console.log(`[Email Service] Inquiry emails sent successfully for ID: ${inquiry.id}`);
   } catch (error) {
     console.error(`[Email Service] Critical error sending inquiry emails:`, error);
   }
@@ -127,12 +144,15 @@ export const sendInquiryEmails = async (inquiry: Inquiry) => {
  * Sends order emails to both the user and the admin.
  */
 export const sendOrderEmails = async (order: Order, userEmail: string, userName: string) => {
+  const transporter = createTransporter();
+  if (!transporter) return;
+
   try {
     const formattedDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
     // 1. Send Order Confirmation email to User
-    const userPromise = resend.emails.send({
-      from: FROM_EMAIL,
+    const userMailOptions = {
+      from: `"${COMPANY_NAME}" <${process.env.SMTP_USER}>`,
       to: userEmail,
       subject: `Order Confirmation: ${order.orderNumber} - ${COMPANY_NAME}`,
       html: `
@@ -171,11 +191,11 @@ export const sendOrderEmails = async (order: Order, userEmail: string, userName:
         </body>
         </html>
       `
-    });
+    };
 
     // 2. Send Notification email to Admin
-    const adminPromise = resend.emails.send({
-      from: `"${COMPANY_NAME} System" <onboarding@resend.dev>`,
+    const adminMailOptions = {
+      from: `"${COMPANY_NAME} System" <${process.env.SMTP_USER}>`,
       to: ADMIN_EMAIL,
       subject: `[New Order] ${order.orderNumber} placed by ${userName}`,
       html: `
@@ -206,15 +226,15 @@ export const sendOrderEmails = async (order: Order, userEmail: string, userName:
         </body>
         </html>
       `
-    });
+    };
 
     // Send emails in parallel
-    const [userRes, adminRes] = await Promise.all([userPromise, adminPromise]);
+    await Promise.all([
+      transporter.sendMail(userMailOptions).catch(e => console.error("Failed to send user order email:", e)),
+      transporter.sendMail(adminMailOptions).catch(e => console.error("Failed to send admin order email:", e))
+    ]);
 
-    if (userRes.error) console.error("Failed to send user order email:", userRes.error);
-    if (adminRes.error) console.error("Failed to send admin order email:", adminRes.error);
-
-    console.log(`[Email Service] Order emails handled via Resend for Order: ${order.orderNumber}`);
+    console.log(`[Email Service] Order emails sent successfully for Order: ${order.orderNumber}`);
   } catch (error) {
     console.error(`[Email Service] Critical error sending order emails:`, error);
   }
@@ -224,10 +244,13 @@ export const sendOrderEmails = async (order: Order, userEmail: string, userName:
  * Sends a 6-digit OTP to the user's email for registration verification.
  */
 export const sendOTPEmail = async (email: string, otp: string) => {
+  const transporter = createTransporter();
+  if (!transporter) return;
+
   try {
-    const { data, error } = await resend.emails.send({
-      from: FROM_EMAIL,
-      to: email, // Note: In Resend free tier, this MUST match your registered Resend email address
+    const userMailOptions = {
+      from: `"${COMPANY_NAME}" <${process.env.SMTP_USER}>`,
+      to: email,
       subject: `Your Verification Code - ${COMPANY_NAME}`,
       html: `
         <!DOCTYPE html>
@@ -258,14 +281,11 @@ export const sendOTPEmail = async (email: string, otp: string) => {
         </body>
         </html>
       `
-    });
+    };
 
-    if (error) {
-      console.error(`[Email Service] Resend API Error on OTP:`, error);
-    } else {
-      console.log(`[Email Service] OTP email sent successfully via Resend to: ${email} (ID: ${data?.id})`);
-    }
+    await transporter.sendMail(userMailOptions);
+    console.log(`[Email Service] OTP email sent successfully to: ${email}`);
   } catch (error) {
-    console.error(`[Email Service] Critical exception sending OTP email:`, error);
+    console.error(`[Email Service] Critical error sending OTP email:`, error);
   }
 };
