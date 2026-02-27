@@ -1,0 +1,158 @@
+﻿
+> rest-express@1.0.0 build
+> tsx script/build.ts
+
+building client...
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32mÔ£ô[39m 1868 modules transformed.
+rendering chunks...
+[meta-images] no Replit deployment domain found, skipping meta tag updates
+computing gzip size...
+[2m../dist/public/[22m[32mindex.html                 [39m[1m[2m  1.66 kB[22m[1m[22m[2m Ôöé gzip:   0.65 kB[22m
+[2m../dist/public/[22m[35massets/index-DbjZeSKT.css  [39m[1m[2m102.75 kB[22m[1m[22m[2m Ôöé gzip:  17.53 kB[22m
+[2m../dist/public/[22m[36massets/index-CSHzrJ72.js   [39m[1m[33m633.26 kB[39m[22m[2m Ôöé gzip: 188.25 kB[22m
+npm : [33m
+At line:1 char:1
++ npm run build > 
+build_output.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: ([33m:String)   
+  [], RemoteExcepti    
+on
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+(!) Some chunks are 
+larger than 500 kB 
+after minification. 
+Consider:
+- Using dynamic 
+import() to code-split 
+the application
+- Use build.rollupOptio
+ns.output.manualChunks 
+to improve chunking: ht
+tps://rollupjs.org/conf
+iguration-options/#outp
+ut-manualchunks
+- Adjust chunk size 
+limit for this warning 
+via build.chunkSizeWarn
+ingLimit.[39m
+[32mÔ£ô built in 4.75s[39m
+building server...
+X [ERROR] Top-level 
+await is currently not 
+supported with the 
+"cjs" output format
+
+    server/db.ts:11:22:
+      11 Ôöé   const { 
+drizzle } = await impor
+t("drizzle-orm/postgres
+-js");
+         ÔòÁ           
+            ~~~~~
+
+X [ERROR] Top-level 
+await is currently not 
+supported with the 
+"cjs" output format
+
+    server/db.ts:12:19:
+      12 Ôöé   const 
+postgres = await 
+import("postgres");
+         ÔòÁ           
+         ~~~~~
+
+X [ERROR] Top-level 
+await is currently not 
+supported with the 
+"cjs" output format
+
+    server/db.ts:13:17:
+      13 Ôöé   const 
+schema = await import("
+@shared/schema");
+         ÔòÁ           
+       ~~~~~
+
+3 errors
+Error: Build failed 
+with 3 errors:
+server/db.ts:11:22: 
+ERROR: Top-level await 
+is currently not 
+supported with the 
+"cjs" output format
+server/db.ts:12:19: 
+ERROR: Top-level await 
+is currently not 
+supported with the 
+"cjs" output format
+server/db.ts:13:17: 
+ERROR: Top-level await 
+is currently not 
+supported with the 
+"cjs" output format
+    at 
+failureErrorWithLog (C:
+\Users\yash\Downloads\C
+orporate-Hub\Corporate-
+Hub\node_modules\esbuil
+d\lib\main.js:1467:15)
+    at C:\Users\yash\Do
+wnloads\Corporate-Hub\C
+orporate-Hub\node_modul
+es\esbuild\lib\main.js:
+926:25
+    at C:\Users\yash\Do
+wnloads\Corporate-Hub\C
+orporate-Hub\node_modul
+es\esbuild\lib\main.js:
+878:52
+    at 
+buildResponseToResult (
+C:\Users\yash\Downloads
+\Corporate-Hub\Corporat
+e-Hub\node_modules\esbu
+ild\lib\main.js:924:7)
+    at C:\Users\yash\Do
+wnloads\Corporate-Hub\C
+orporate-Hub\node_modul
+es\esbuild\lib\main.js:
+951:16
+    at responseCallback
+s.<computed> (C:\Users\
+yash\Downloads\Corporat
+e-Hub\Corporate-Hub\nod
+e_modules\esbuild\lib\m
+ain.js:603:9)
+    at 
+handleIncomingPacket (C
+:\Users\yash\Downloads\
+Corporate-Hub\Corporate
+-Hub\node_modules\esbui
+ld\lib\main.js:658:12)
+    at 
+Socket.readFromStdout (
+C:\Users\yash\Downloads
+\Corporate-Hub\Corporat
+e-Hub\node_modules\esbu
+ild\lib\main.js:581:7)
+    at Socket.emit 
+(node:events:519:28)
+    at addChunk (node:i
+nternal/streams/readabl
+e:559:12) {
+  errors: 
+[Getter/Setter],
+  warnings: 
+[Getter/Setter]
+}

@@ -1,0 +1,67 @@
+NAME: L-Arginine, 99%+
+
+--- Method1: row->col4+col8 ---
+  [CAS] => [74-79-3]
+  [Grade] => [for biochemistry]
+  [Mol. Formula] => [C6H14N4O2]
+  [HSN Code] => [29224990]
+  [Purity] => [99%+]
+  [Mol. Weight] => [174.20]
+  [Packing] => [Bottle / Drum]
+  [GST Tax Rate] => [18%]
+  [CAS] => [74-79-3]
+  [Grade] => [for biochemistry]
+  [Mol. Formula] => [C6H14N4O2]
+  [HSN Code] => [29224990]
+  [Purity] => [99%+]
+  [Mol. Weight] => [174.20]
+  [Packing] => [Bottle / Drum]
+  [GST Tax Rate] => [18%]
+
+--- Method2: find col-4 text then sibling ---
+  [Company Name] => []
+  [Contact Person] => []
+  [Contact No.] => []
+  [Email] => []
+  [Requirement] => []
+  [CAS] => [74-79-3]
+  [Grade] => [for biochemistry]
+  [Mol. Formula] => [C6H14N4O2]
+  [HSN Code] => [29224990]
+  [Purity] => [99%+]
+  [Mol. Weight] => [174.20]
+  [Packing] => [Bottle / Drum]
+  [GST Tax Rate] => [18%]
+  [CAS] => [74-79-3]
+  [Grade] => [for biochemistry]
+  [Mol. Formula] => [C6H14N4O2]
+  [HSN Code] => [29224990]
+  [Purity] => [99%+]
+  [Mol. Weight] => [174.20]
+  [Packing] => [Bottle / Drum]
+  [GST Tax Rate] => [18%]
+  [Company Name] => []
+  [Contact Person] => []
+  [Contact No.] => []
+  [Email] => []
+  [Quantity] => []
+  [Categories] => [Amino acids,Arginine]
+  [Assay] => [99%+]
+  [Appearance (Colour)] => [White to almost white]
+  [Appearance (Form)] => [Powder or crystalline powder or chunks]
+  [Specific rotation[α]20D] => [+26.3° to +27.7°]
+  [Chloride (Cl)] => [≤0.05%]
+  [Sulphate (SO4)] => [≤0.03%]
+  [Iron (Fe)] => [≤0.003%]
+  [Heavy metals (Pb)] => [≤0.0015%]
+  [Residue on ignition] => [≤0.3%]
+
+--- RAW HTML around Mol. Formula (first occurrence) ---
+                      <div class="col-xl-6">
+                                        <div class="row align-items-center h-100">
+                                            <label class="col-4 pr-0">Mol. Formula</label>
+                                            <div class="col-8"><span>C<sub>6</sub>H<sub>1</sub><sub>4</sub>N<sub>4</sub>O<sub>2</sub></span> </div>
+                                            <div class="col-12 align-self-end">
+                                                <hr></hr>
+                                            </div>
+                                     

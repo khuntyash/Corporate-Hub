@@ -1,0 +1,81 @@
+URL: https://www.ottokemi.com/arginine/l-arginine-99.aspx
+Name: L-Arginine, 99%+
+
+=== TABLES FOUND ===
+
+Table 0: class="pro_cost", rows=6
+  Row 0: Packings | Price (INR)
+  Row 1: 25 gm | 297.00
+  Row 2: 100 gm | 603.00
+  Row 3: 500 gm | 2403.00
+  Row 4: 1 kg | 3996.00
+  Row 5: 4 x 25 kg | POR
+
+Table 1: class="pro_cost", rows=6
+  Row 0: Packings | Price (USD)
+  Row 1: 25 gm | 4.13
+  Row 2: 100 gm | 8.38
+  Row 3: 500 gm | 33.38
+  Row 4: 1 kg | 55.50
+  Row 5: 4 x 25 kg | POR
+
+Table 2: class="pro_cost", rows=6
+  Row 0: Packings | Price (INR)
+  Row 1: 25 gm | 297.00
+  Row 2: 100 gm | 603.00
+  Row 3: 500 gm | 2403.00
+  Row 4: 1 kg | 3996.00
+  Row 5: 4 x 25 kg | POR
+
+Table 3: class="pro_cost", rows=6
+  Row 0: Packings | Price (USD)
+  Row 1: 25 gm | 4.13
+  Row 2: 100 gm | 8.38
+  Row 3: 500 gm | 33.38
+  Row 4: 1 kg | 55.50
+  Row 5: 4 x 25 kg | POR
+
+=== ELEMENTS CONTAINING "gm" or "kg" ===
+  TD.undefined | "25 gm"
+  TD.undefined | "100 gm"
+  TD.undefined | "500 gm"
+  TD.undefined | "1 kg"
+  TD.undefined | "4 x 25 kg"
+  TD.undefined | "25 gm"
+  TD.undefined | "100 gm"
+  TD.undefined | "500 gm"
+  TD.undefined | "1 kg"
+  TD.undefined | "4 x 25 kg"
+  TD.undefined | "25 gm"
+  TD.undefined | "100 gm"
+  TD.undefined | "500 gm"
+  TD.undefined | "1 kg"
+  TD.undefined | "4 x 25 kg"
+  TD.undefined | "25 gm"
+  TD.undefined | "100 gm"
+  TD.undefined | "500 gm"
+  TD.undefined | "1 kg"
+  TD.undefined | "4 x 25 kg"
+
+=== RAW HTML around "100 gm" ===
+                                   </td><td>
+                                        
+                                        
+                                        297.00
+                                    </td>
+		</tr><tr class="pro_cost">
+			<td>
+                                        100 gm
+                                    </td><td>
+                                        
+                                        
+                                        603.00
+                                    </td>
+		</tr><tr class="pro_cost">
+			<td>
+                                        500 gm
+                                    </td><td>
+                                        
+                                        
+                                        2403.00
+   

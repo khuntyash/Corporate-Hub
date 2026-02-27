@@ -1,0 +1,53 @@
+﻿node : ÔØî Database 
+connection failed: Error: 
+Dynamic require of 
+"drizzle-orm/postgres-js" 
+is not supported
+At line:1 char:1
++ node dist/index.js 2> 
+server_error.log
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (ÔØî  
+   Database co...s not s   
+ upported:String) [], R    
+emoteException
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+    at file:///C:/Users/yas
+h/Downloads/Corporate-Hub/C
+orporate-Hub/dist/index.js:
+1:382
+    at file:///C:/Users/yas
+h/Downloads/Corporate-Hub/C
+orporate-Hub/dist/index.js:
+1:72384
+    at file:///C:/Users/yas
+h/Downloads/Corporate-Hub/C
+orporate-Hub/dist/index.js:
+1:461
+    at file:///C:/Users/yas
+h/Downloads/Corporate-Hub/C
+orporate-Hub/dist/index.js:
+1:72844
+    at file:///C:/Users/yas
+h/Downloads/Corporate-Hub/C
+orporate-Hub/dist/index.js:
+1:461
+    at file:///C:/Users/yas
+h/Downloads/Corporate-Hub/C
+orporate-Hub/dist/index.js:
+75:19238
+    at ModuleJob.run (node:
+internal/modules/esm/module
+_job:222:25)
+    at async 
+ModuleLoader.import (node:i
+nternal/modules/esm/loader:
+316:24)
+    at async asyncRunEntryP
+ointWithESMLoader (node:int
+ernal/modules/run_main:123:
+5)

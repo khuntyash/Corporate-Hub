@@ -1,0 +1,165 @@
+URL: https://www.ottokemi.com/arginine/l-arginine-99.aspx
+Name: L-Arginine, 99%+
+
+=== HEADERS AND NEXT ELEMENTS ===
+
+H3: "Enquiry"
+  Next Tag: DIV.inner_box enquiry-box
+  Next Text (first 200 chars): Company Name
+            
+            
+        
+        
+            Contact Person
+            
+            
+        
+        
+            Contact No.
+            
+            
+               
+      
+
+H5: "Documents"
+  Next Tag: UL.docs-list
+  Next Text (first 200 chars): MSDS
+                                    
+                                    
+                                        Certificate of Analysis
+                                    
+                    
+
+H1: "L-Arginine, 99%+"
+  Next Tag: H6.text-blue font-weight-bold
+  Next Text (first 200 chars): Code: A 2585
+
+H6: "Code: A 2585"
+
+H5: "Documents"
+  Next Tag: UL.docs-list
+  Next Text (first 200 chars): MSDS
+
+                                    
+                                        Certificate of Analysis
+                                    
+                                        Specifications S
+
+H5: "Packings"
+  Next Tag: DIV.row mt-3 mt-lg-4
+  Next Text (first 200 chars): 
+
+H5: "Enquire"
+  Next Tag: DIV.enquiry_form body-form
+  Next Text (first 200 chars): Company Name
+                    
+                    
+                
+                
+                    Contact Person
+                    
+                    
+                
+                
+
+
+H5: "Properties"
+  Next Tag: DIV.product-discription
+  Next Text (first 200 chars): Categories
+                            
+                                Amino acids,Arginine
+                            
+                            
+                                
+                
+
+H5: "Description"
+  Next Tag: P.font-weight-semibold
+  Next Text (first 200 chars): L-Arginine is an essential amino acid and precursor of nitric oxide synthesis that induces vasodilation in vivo. Nitric oxide potentiates insulin-mediated glucose uptake through the increase in blood 
+
+H5: "Application"
+  Next Tag: P.font-weight-semibold
+  Next Text (first 200 chars): A 2585 (OTTO) L-Arginine, 99%+ Cas no 74-79-3 - used for the synthesis of polyamines (mainly through ornithine and to a lesser degree through agmatine, citrulline, and glutamate.
+
+H5: "Safety Information"
+  Next Tag: DIV.clear
+  Next Text (first 200 chars): 
+
+H5: "Documentation"
+  Next Tag: DIV.row
+  Next Text (first 200 chars): Certificate Of Analysis
+                    
+	
+                            
+                                
+                                    
+                                        
+             
+
+H5: "Related Products"
+  Next Tag: DIV.related-products row align-items-stretch
+  Next Text (first 200 chars): 62965-35-9
+                                    B 8051
+                                    Boc-Tle-OH, ≥99%
+                                
+                            
+                        
+      
+
+H6: "B 8051"
+  Next Tag: P.font-weight-semibold text-dark-grey mb-0
+  Next Text (first 200 chars): Boc-Tle-OH, ≥99%
+
+H6: "F 5003"
+  Next Tag: P.font-weight-semibold text-dark-grey mb-0
+  Next Text (first 200 chars): Fmoc-D-Asp(OtBu)-OH, 98%
+
+H6: "L 1448"
+  Next Tag: P.font-weight-semibold text-dark-grey mb-0
+  Next Text (first 200 chars): DL-Norleucine, 99%+
+
+H6: "V 1204"
+  Next Tag: P.font-weight-semibold text-dark-grey mb-0
+  Next Text (first 200 chars): D-Valine, 99%
+
+H5: "Technical Services"
+  Next Tag: P.col-lg-10 col-xl-9 font-weight-semibold text-dark-grey p-0
+  Next Text (first 200 chars): Our team of R&D Experts and Scientists have expertise in all areas of research of Lab Chemicals, Nano Technology, Life Science, Custom Synthesis, Chromatography, and many others.
+
+=== DIV.ROW ELEMENTS (Properties?) ===
+  Row 2: "CASGradeMol. FormulaHSN CodePurityMol. WeightPackingGST Tax RateCASGradeMol. FormulaHSN CodePurityMol. WeightPackingGST Tax Rate" -> "74-79-3
+                                            for biochemistryC6H14N4O2 2922499099%+174.20Bottle / Drum18%
+                                            74-79-3
+                                        for biochemistryC6H14N4O22922499099%+174.20Bottle / Drum18%"
+  Row 4: "CASGradeMol. FormulaHSN CodePurityMol. WeightPackingGST Tax Rate" -> "74-79-3
+                                            for biochemistryC6H14N4O2 2922499099%+174.20Bottle / Drum18%"
+  Row 5: "CAS" -> "74-79-3"
+  Row 6: "Grade" -> "for biochemistry"
+  Row 7: "Mol. Formula" -> "C6H14N4O2"
+  Row 8: "HSN Code" -> "29224990"
+  Row 9: "Purity" -> "99%+"
+  Row 10: "Mol. Weight" -> "174.20"
+  Row 11: "Packing" -> "Bottle / Drum"
+  Row 12: "GST Tax Rate" -> "18%"
+  Row 13: "CASGradeMol. FormulaHSN CodePurityMol. WeightPackingGST Tax Rate" -> "74-79-3
+                                        for biochemistryC6H14N4O22922499099%+174.20Bottle / Drum18%"
+  Row 14: "CAS" -> "74-79-3"
+  Row 15: "Grade" -> "for biochemistry"
+  Row 16: "Mol. Formula" -> "C6H14N4O2"
+  Row 17: "HSN Code" -> "29224990"
+  Row 18: "Purity" -> "99%+"
+  Row 19: "Mol. Weight" -> "174.20"
+  Row 20: "Packing" -> "Bottle / Drum"
+  Row 21: "GST Tax Rate" -> "18%"
+  Row 22: "Company NameContact PersonContact No.EmailQuantity" -> ""
+  Row 25: "CategoriesAssayAppearance (Colour)Appearance (Form)Specific rotation[α]20DChloride (Cl)Sulphate (SO4)Iron (Fe)Heavy metals (Pb)Residue on ignition" -> ""
+  Row 26: "Categories" -> ""
+  Row 27: "Assay" -> ""
+  Row 28: "Appearance (Colour)" -> ""
+  Row 29: "Appearance (Form)" -> ""
+  Row 30: "Specific rotation[α]20D" -> ""
+  Row 31: "Chloride (Cl)" -> ""
+  Row 32: "Sulphate (SO4)" -> ""
+  Row 33: "Iron (Fe)" -> ""
+  Row 34: "Heavy metals (Pb)" -> ""
+  Row 35: "Residue on ignition" -> ""

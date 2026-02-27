@@ -1,0 +1,120 @@
+=== SPANS with ID ===
+
+=== IMAGES ===
+  ../source/images/logo.png
+  CaptchaImage.axd?guid=40195596-361f-46f2-a353-4e6a0e4de47a
+  https://www.ottokemi.com/product/structures.ashx?imagepath=products/structure/A 2585.png
+  ../source/images/icon-pdf.png
+  ../source/images/icon-certificate.png
+  ../source/images/icon-sheet.png
+  ../source/images/icon-pdf.png
+  ../source/images/icon-certificate.png
+  ../source/images/icon-sheet.png
+  ../product/bottleimage.ashx?imagepath=1661/medium-plastic-bottle-7.jpg
+  ../product/bottleimage.ashx?imagepath=1662/large-platic-bottle-6.jpg
+  ../product/bottleimage.ashx?imagepath=1663/5kg-can-4.jpg
+  CaptchaImage.axd?guid=331d1cfd-3b21-4a3a-9041-d9567ea87852
+  ../source/images/icon-pdf.png
+  ../source/images/icon-sheet.png
+  https://www.ottokemi.com/product/structures.ashx?imagepath=products/structure/h-6072-16315.jpg
+  https://www.ottokemi.com/product/structures.ashx?imagepath=products/structure/p-2835-14927.jpg
+  https://www.ottokemi.com/product/structures.ashx?imagepath=products/structure/a 1353.png
+
+=== TABLE rows (first 20) ===
+  "25 gm" | "297.00"
+  "100 gm" | "603.00"
+  "500 gm" | "2403.00"
+  "1 kg" | "3996.00"
+  "4 x 25 kg" | "POR"
+  "25 gm" | "4.13"
+  "100 gm" | "8.38"
+  "500 gm" | "33.38"
+  "1 kg" | "55.50"
+  "4 x 25 kg" | "POR"
+  "25 gm" | "297.00"
+  "100 gm" | "603.00"
+  "500 gm" | "2403.00"
+  "1 kg" | "3996.00"
+  "4 x 25 kg" | "POR"
+  "25 gm" | "4.13"
+
+=== col-4 labels ===
+  "CAS"
+  "Grade"
+  "Mol. Formula"
+  "HSN Code"
+  "Purity"
+  "Mol. Weight"
+  "Packing"
+  "GST Tax Rate"
+  "CAS"
+  "Grade"
+  "Mol. Formula"
+  "HSN Code"
+  "Purity"
+  "Mol. Weight"
+  "Packing"
+  "GST Tax Rate"
+
+=== Parity check - look for 174 (mol weight) ===
+  tag:HTML id:undefined class:undefined | "L-Arginine, 99%+ 74-79-3 - Manufacturers & Suppliers in India with worldwide shi"
+  tag:BODY id:fade class:inner-pages | "<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P7L4LCP" height="0""
+  tag:FORM id:form1 class:undefined | "//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm ="
+  tag:DIV id:undefined class:body-content-holder | "Kindly note: Due to ongoing raw material / metal shortages and market price vola"
+  tag:DIV id:undefined class:bg-light-grey masthead pro-details pb-md-4 py-3 | "Back
+                
+            
+            
+                
+               "
+  tag:DIV id:undefined class:container mt-lg- | "Back
+                
+            
+            
+                
+               "
+  tag:DIV id:undefined class:row mt-lg-1 | "Documents
+                                
+                                    
+"
+  tag:DIV id:undefined class:col-md-6 product-discription pr-xl-4 order-3 | "Back
+                                
+                                
+         "
+  tag:DIV id:undefined class: d-lg-block d-none | "CAS
+                                            
+                               "
+  tag:DIV id:undefined class:row mt-3 | "CAS
+                                            
+                               "
+  tag:DIV id:undefined class:col-xl-6 | "Mol. Formula
+                                            C6H14N4O2"
+  tag:DIV id:undefined class:row align-items-center h-100 | "Mol. Formula
+                                            C6H14N4O2"
+  tag:DIV id:undefined class:col-8 | "C6H14N4O2"
+  tag:SPAN id:undefined class:undefined | "C6H14N4O2"
+  tag:DIV id:undefined class:col-xl-6 | "HSN Code
+                                            29224990"
+  tag:DIV id:undefined class:row align-items-center h-100 | "HSN Code
+                                            29224990"
+  tag:DIV id:undefined class:col-8 | "29224990"
+  tag:DIV id:undefined class:col-8 | "174.20"
+  tag:DIV id:undefined class:col-md-7 d-lg-none product-discription order-3 | "CAS
+                                        
+                                   "
+  tag:DIV id:undefined class:row mt-md-3 | "CAS
+                                        
+                                   "
+  tag:DIV id:undefined class:col-lg-6 pr-lg-0 | "CAS
+                                        
+                                   "
+  tag:DIV id:undefined class:row align-items-stretch | "Mol. Formula
+                                        C6H14N4O2"
+  tag:DIV id:undefined class:col-8 | "C6H14N4O2"
+  tag:DIV id:undefined class:row align-items-stretch | "HSN Code
+                                        29224990"
+  tag:DIV id:undefined class:col-8 | "29224990"
+  tag:DIV id:undefined class:col-8 | "174.20"

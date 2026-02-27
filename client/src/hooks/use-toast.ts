@@ -132,8 +132,11 @@ let memoryState: State = { toasts: [] }
 
 function dispatch(action: Action) {
   memoryState = reducer(memoryState, action)
+  // Use setTimeout to batch updates and avoid concurrent rendering issues
   listeners.forEach((listener) => {
-    listener(memoryState)
+    setTimeout(() => {
+      listener(memoryState)
+    }, 0)
   })
 }
 
@@ -172,14 +175,18 @@ function useToast() {
   const [state, setState] = React.useState<State>(memoryState)
 
   React.useEffect(() => {
-    listeners.push(setState)
+    // Create a stable listener that updates state
+    const listener = (newState: State) => {
+      setState(newState)
+    }
+    listeners.push(listener)
     return () => {
-      const index = listeners.indexOf(setState)
+      const index = listeners.indexOf(listener)
       if (index > -1) {
         listeners.splice(index, 1)
       }
     }
-  }, [state])
+  }, []) // Empty deps - only run once on mount
 
   return {
     ...state,

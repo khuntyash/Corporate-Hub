@@ -1,7 +1,30 @@
+// Server restarted to reload storage data
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
+import path from "path";
+import crypto from "crypto";
+
+// Ensure JWT_SECRET is set. For security in demo mode, we generate a random key 
+// on every restart. This forces all users to log in again when the server restarts.
+// Ensure JWT_SECRET is set. 
+if (!process.env.JWT_SECRET) {
+  if (process.env.NODE_ENV === 'production') {
+    console.error("CRITICAL: JWT_SECRET is not set in production environment!");
+    // In a real production app, you might want to exit here
+    // process.exit(1);
+    process.env.JWT_SECRET = crypto.randomBytes(64).toString("hex");
+    console.log("Generating temporary random JWT_SECRET for safety.");
+  } else {
+    console.log("Generating random JWT_SECRET for session security (Non-production)");
+    process.env.JWT_SECRET = crypto.randomBytes(64).toString("hex");
+  }
+} else if (process.env.NODE_ENV === 'demo') {
+  // Always rotate in demo mode for security? Or keep it?
+  // Let's keep the existing logic where demo mode rotations are fine.
+  console.log("Using provided or random JWT_SECRET in Demo Mode");
+}
 
 const app = express();
 const httpServer = createServer(app);
@@ -21,6 +44,9 @@ app.use(
 );
 
 app.use(express.urlencoded({ extended: false }));
+
+// Serve uploaded files
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {

@@ -1,0 +1,25 @@
+﻿Loaded demo data from C:\Users\yash\Downloads\Corporate-Hub\Corporate-Hub\server\data\storage.json
+node : ÔØî Database 
+connection failed: Error: 
+Dynamic require of 
+"drizzle-orm/postgres-js" 
+is not supported
+At line:1 char:1
++ node dist/index.js > 
+server_log.txt 2>&1 ; 
+Get-Content server_log.txt 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (ÔØî  
+   Database co...s not s   
+ upported:String) [], R    
+emoteException
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+    at file:///C:/Users/yas
+h/Downloads/Corporate-Hub/C
+orporate-Hub/dist/index.js:
+1:337

@@ -69,4 +69,13 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-display text-primary tracking-tight;
   }
+
+  /* Chemical Formula Subscripts */
+  sub {
+    font-size: 1em;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+    bottom: -0.2em;
+  }
 }

@@ -2,10 +2,11 @@ import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useApp } from "@/lib/store";
+import { ChemicalImage } from "@/components/chemical-image";
 import { Link, useLocation } from "wouter";
 import { Trash2, AlertCircle, Lock } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
@@ -17,17 +18,32 @@ export default function Cart() {
 
   // Checkout State
   const [checkoutData, setCheckoutData] = useState({
-    company: user?.companyName || "",
     address: "",
-    poNumber: "",
   });
+
+  const [fees, setFees] = useState({
+    shipping: 500,
+    taxRate: 0.08
+  });
+
+  useEffect(() => {
+    fetch("/api/content")
+      .then(res => res.json())
+      .then(data => {
+        setFees({
+          shipping: parseFloat(data.config_shipping_fee || "500"),
+          taxRate: parseFloat(data.config_tax_rate || "0.08")
+        });
+      })
+      .catch(err => console.error("Failed to load fees configuration", err));
+  }, []);
 
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
   const subtotal = cart.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
-  
+
   // Tax and Shipping would be calculated here
-  const tax = subtotal * 0.08; 
-  const shipping = 500; // Flat rate mock
+  const tax = subtotal * fees.taxRate;
+  const shipping = fees.shipping; // Flat rate mock
   const total = subtotal + tax + shipping;
 
   const handleCheckout = () => {
@@ -38,10 +54,28 @@ export default function Cart() {
     setStep("checkout");
   };
 
-  const handlePlaceOrder = (e: React.FormEvent) => {
+  const handlePlaceOrder = async (e: React.FormEvent) => {
     e.preventDefault();
-    placeOrder();
-    setLocation("/dashboard");
+
+    // Collect form data directly from the state we bound to inputs or Refs.
+    // However, in this file, we utilized 'checkoutData' state but the Inputs below 
+    // were not fully bound to it in the original code (they had defaults/required but not onChange).
+    // Let's bind them properly or use FormData. Using FormData is cleaner here.
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = {
+      address: formData.get("address") as string,
+      city: formData.get("city") as string,
+      postalCode: formData.get("postalCode") as string,
+    };
+
+    try {
+      await placeOrder(data);
+      setLocation("/dashboard");
+    } catch (err) {
+      // Error handling is done in store (toasts)
+      console.error("Order failed", err);
+    }
   };
 
   if (cart.length === 0 && step === "cart") {
@@ -70,22 +104,27 @@ export default function Cart() {
 
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          
+
           {/* Main Column */}
           <div className="lg:col-span-2">
             {step === "cart" ? (
               <div className="space-y-6">
                 {cart.map((item) => (
                   <Card key={item.product.id} className="flex flex-col sm:flex-row p-6 gap-6 items-center">
-                    <img src={item.product.image} alt={item.product.name} className="w-24 h-24 object-contain bg-gray-100 rounded p-2" />
+                    <ChemicalImage
+                      src={item.product.image}
+                      alt={item.product.name}
+                      casNumber={item.product.casNumber}
+                      className="w-24 h-24 object-contain bg-gray-100 rounded p-2"
+                    />
                     <div className="flex-1 space-y-2 text-center sm:text-left">
                       <h3 className="font-bold text-lg text-primary">{item.product.name}</h3>
                       <p className="text-sm text-muted-foreground">{item.product.category}</p>
                       <p className="font-mono text-sm">Qty: {item.quantity}</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-bold text-lg">${(item.product.price * item.quantity).toLocaleString()}</p>
-                      <p className="text-xs text-muted-foreground">${item.product.price} / unit</p>
+                      <p className="font-bold text-lg">₹{(item.product.price * item.quantity).toLocaleString()}</p>
+                      <p className="text-xs text-muted-foreground">₹{item.product.price} / unit</p>
                     </div>
                     <Button variant="ghost" size="icon" className="text-red-500 hover:bg-red-50 hover:text-red-600" onClick={() => removeFromCart(item.product.id)}>
                       <Trash2 className="h-5 w-5" />
@@ -100,34 +139,24 @@ export default function Cart() {
                     <CardTitle>Shipping & Company Details</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                     <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label>Company Name</Label>
-                          <Input defaultValue={user?.companyName} readOnly className="bg-gray-50" />
-                        </div>
-                        <div className="space-y-2">
-                          <Label>Contact Person</Label>
-                          <Input defaultValue={user?.name} readOnly className="bg-gray-50" />
-                        </div>
-                     </div>
-                     <div className="space-y-2">
-                        <Label>Shipping Address</Label>
-                        <Input required placeholder="Warehouse address..." />
-                     </div>
-                     <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label>City</Label>
-                          <Input required />
-                        </div>
-                        <div className="space-y-2">
-                          <Label>Postal Code</Label>
-                          <Input required />
-                        </div>
-                     </div>
-                     <div className="space-y-2">
-                        <Label>Purchase Order (PO) Number</Label>
-                        <Input required placeholder="PO-2025-XXXX" />
-                     </div>
+                    <div className="space-y-2">
+                      <Label>Contact Person</Label>
+                      <Input defaultValue={user?.name} readOnly className="bg-gray-50" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Shipping Address</Label>
+                      <Input required name="address" placeholder="Warehouse address..." />
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label>City</Label>
+                        <Input required name="city" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>Postal Code</Label>
+                        <Input required name="postalCode" />
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
 
@@ -157,32 +186,32 @@ export default function Cart() {
               <CardContent className="p-6 space-y-4">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Subtotal ({totalItems} items)</span>
-                  <span>${subtotal.toLocaleString()}</span>
+                  <span>₹{subtotal.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Shipping (Est.)</span>
-                  <span>${shipping.toLocaleString()}</span>
+                  <span>₹{shipping.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Tax (8%)</span>
-                  <span>${tax.toLocaleString()}</span>
+                  <span className="text-muted-foreground">Tax ({(fees.taxRate * 100).toFixed(0)}%)</span>
+                  <span>₹{tax.toLocaleString()}</span>
                 </div>
                 <Separator />
                 <div className="flex justify-between font-bold text-lg text-primary">
                   <span>Total</span>
-                  <span>${total.toLocaleString()}</span>
+                  <span>₹{total.toLocaleString()}</span>
                 </div>
 
                 {step === "cart" ? (
                   <>
                     {user?.role === "unverified" ? (
-                       <Alert variant="destructive" className="mt-4">
-                         <AlertCircle className="h-4 w-4" />
-                         <AlertTitle>Verification Required</AlertTitle>
-                         <AlertDescription>
-                           Your account is currently Unverified. You cannot proceed to checkout until your account is approved by an administrator.
-                         </AlertDescription>
-                       </Alert>
+                      <Alert variant="destructive" className="mt-4">
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertTitle>Verification Required</AlertTitle>
+                        <AlertDescription>
+                          Your account is currently Unverified. You cannot proceed to checkout until your account is approved by an administrator.
+                        </AlertDescription>
+                      </Alert>
                     ) : (
                       <Button className="w-full mt-6 bg-gold hover:bg-gold/90 text-primary font-bold" onClick={handleCheckout}>
                         Proceed to Checkout
