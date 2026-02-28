@@ -9,16 +9,14 @@ const createTransporter = () => {
     return null;
   }
 
+  // IPv6 Compatible Configuration (Standard Gmail SMTP)
   return nodemailer.createTransport({
-    host: '142.250.114.108', // smtp.gmail.com IPv4 bypass to avoid ENETUNREACH on Render's IPv6
+    host: 'smtp.gmail.com', // Uses standard DNS resolution (supports both IPv4 and IPv6 natively)
     port: 465,
     secure: true,
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
-    },
-    tls: {
-      servername: 'smtp.gmail.com' // Verify cert against hostname, not IP
     }
   });
 };
